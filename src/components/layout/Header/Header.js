@@ -9,7 +9,7 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-
+import AddIcon from '@material-ui/icons/Add';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
@@ -52,7 +52,16 @@ const Component = ({ className, user }) => {
         <AppBar position="static">
           <Toolbar>
             <Button edge="start" startIcon={<FavoriteIcon />} className={classes.menuButton} color="inherit" aria-label="menu">
-              My adds
+              <Link to='/my-posts'
+                className={classes.login}>
+                My adds
+              </Link>
+            </Button>
+            <Button edge="start" startIcon={<AddIcon />} className={classes.menuButton} color="inherit" aria-label="menu">
+              <Link to='/post/add'
+                className={classes.login}>
+                Add new post
+              </Link>
             </Button>
             <Typography variant="h6" className={classes.title}>
               Bulletin board

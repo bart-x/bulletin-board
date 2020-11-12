@@ -5,38 +5,47 @@ import { Post } from '../Post/Post';
 import clsx from 'clsx';
 
 import { connect } from 'react-redux';
-import { getAll } from '../../../redux/postsRedux';
+import { getAll, fetchPublished } from '../../../redux/postsRedux';
 
 import styles from './Homepage.module.scss';
 import Container from '@material-ui/core/Container';
 
+class Component extends React.Component {
+  componentDidMount() {
+    const { fetchPublishedPosts } = this.props;
+    fetchPublishedPosts();
+  }
+  render() {
+    const { posts } = this.props;
 
-const Component = ({ className, posts }) => {
-  return (
-    <Container className={clsx(styles.Posts, styles.root)}>
-      {posts.map((post) => (
-        <div key={post._id} className={styles.Post}>
-          <Post {...post}></Post>
-        </div>
-      ))}
-    </Container>
-  );
-};
-
+    return (
+      <Container className={clsx(styles.Posts, styles.root)}>
+        {posts.map((post) => (
+          <div key={post._id} className={styles.Post}>
+            <Post key={post._id} {...post}></Post>
+          </div>
+        ))}
+      </Container>
+    );
+  }
+}
 Component.propTypes = {
-  posts: PropTypes.any,
-  className: PropTypes.string,
+  posts: PropTypes.array,
+  fetchPublishedPosts: PropTypes.func,
 };
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   posts: getAll(state),
 });
 
-// const mapDispatchToProps = dispatch => ({
-//   someAction: arg => dispatch(reduxActionCreator(arg)),
-// });
+const mapDispatchToProps = (dispatch) => ({
+  fetchPublishedPosts: () => dispatch(fetchPublished()),
+});
 
-const ComponentContainer = connect(mapStateToProps)(Component);
+const ComponentContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Component);
 
 export {
   //Component as Homepage,

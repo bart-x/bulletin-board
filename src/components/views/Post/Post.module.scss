@@ -1,6 +1,10 @@
 @import "../../../styles/settings.scss";
 
 .root {
+  .link {
+    text-decoration: none;
+    color: rgb(43, 58, 58);
+  }
   .BoardData {
     font-size: 80%;
   }
@@ -29,5 +33,22 @@
   img:hover {
     transform: scale(1.25);
     opacity: 0.8;
+  }
+  .button {
+    margin-left: 5px;
+  }
+  .buttons {
+    opacity: 0;
+    width: 100%;
+    margin-top: 1rem;
+    transition: all ease 1s;
+  }
+  &:hover {
+    .buttons {
+      opacity: 1;
+    }
+  }
+  .edit {
+    color: white;
   }
 }

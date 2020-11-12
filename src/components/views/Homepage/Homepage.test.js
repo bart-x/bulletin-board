@@ -13,7 +13,9 @@ const mockProps = {
       date_publ: '2020-03-09',
     },
   ],
+  fetchPublishedPosts: jest.fn(),
 };
+
 describe('Component Homepage', () => {
   it('should render without crashing', () => {
     const component = shallow(<HomepageComponent {...mockProps} />);

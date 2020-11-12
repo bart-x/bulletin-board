@@ -1,0 +1,26 @@
+[
+  {
+    "_id": {
+      "$oid": "5f2da9635694d67f58ff8c1d"
+    },
+    "email": "jimenezmercer@vertide.com",
+    "authenticated": true,
+    "state": "user"
+  },
+  {
+    "_id": {
+      "$oid": "5f2da9635694d67f58ff8c1e"
+    },
+    "email": "lulabarber@vertide.com",
+    "authenticated": true,
+    "state": "user"
+  },
+  {
+    "_id": {
+      "$oid": "5f2da9635694d67f58ff8c1f"
+    },
+    "email": "lesleychan@vertide.com",
+    "authenticated": true,
+    "state": "user"
+  }
+]

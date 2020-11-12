@@ -1,0 +1,58 @@
+@import "../../../styles/settings.scss";
+
+.root {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.4rem;
+}
+
+.image {
+  background-color: #eceff1;
+  width: 60%;
+  height: 60%;
+}
+
+.head {
+  display: flex;
+  justify-content: space-between;
+
+  button,
+  button:hover {
+    background-color: teal;
+    color: #eceff1;
+    transition: all 1s;
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  a {
+    :only-child {
+      font-size: 2rem;
+      color: rgb(43, 58, 58);
+    }
+  }
+}
+
+.postBody {
+  border-bottom: 1px solid grey;
+  text-align: justify;
+
+  .details {
+    text-align: right;
+  }
+
+  small {
+    opacity: 0.4;
+  }
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.2rem;
+}
+
+h3 {
+  font-size: 2rem;
+}

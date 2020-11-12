@@ -1,6 +1,9 @@
 /* selectors */
-export const getAll = ({posts}) => posts.data;
-
+export const getAll = ({ posts }) => posts.data;
+export const getPostById = ({ posts }, id) => {
+  const filteredPost = posts.data.filter(post => post._id == id);
+  return filteredPost.length ? filteredPost[0] : { error: true };
+};
 /* action name creator */
 const reducerName = 'posts';
 const createActionName = name => `app/${reducerName}/${name}`;

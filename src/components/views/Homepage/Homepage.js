@@ -1,37 +1,45 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Post } from '../Post/Post';
 
 import clsx from 'clsx';
 
-// import { connect } from 'react-redux';
-// import { reduxSelector, reduxActionCreator } from '../../../redux/exampleRedux.js';
+import { connect } from 'react-redux';
+import { getAll } from '../../../redux/postsRedux';
 
 import styles from './Homepage.module.scss';
+import Container from '@material-ui/core/Container';
 
-const Component = ({className, children}) => (
-  <div className={clsx(className, styles.root)}>
-    <h2>Homepage</h2>
-    {children}
-  </div>
-);
+
+const Component = ({ className, posts }) => {
+  return (
+    <Container className={clsx(styles.Posts, styles.root)}>
+      {posts.map((post) => (
+        <div key={post._id} className={styles.Post}>
+          <Post {...post}></Post>
+        </div>
+      ))}
+    </Container>
+  );
+};
 
 Component.propTypes = {
-  children: PropTypes.node,
+  posts: PropTypes.any,
   className: PropTypes.string,
 };
 
-// const mapStateToProps = state => ({
-//   someProp: reduxSelector(state),
-// });
+const mapStateToProps = state => ({
+  posts: getAll(state),
+});
 
 // const mapDispatchToProps = dispatch => ({
 //   someAction: arg => dispatch(reduxActionCreator(arg)),
 // });
 
-// const Container = connect(mapStateToProps, mapDispatchToProps)(Component);
+const ComponentContainer = connect(mapStateToProps)(Component);
 
 export {
-  Component as Homepage,
-  // Container as Homepage,
+  //Component as Homepage,
+  ComponentContainer as Homepage,
   Component as HomepageComponent,
 };
